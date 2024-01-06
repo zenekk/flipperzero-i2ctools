@@ -14,6 +14,7 @@ void draw_sender_view(Canvas* canvas, i2cSender* i2c_sender) {
         canvas_draw_str_aligned(canvas, 20, 5, AlignLeft, AlignTop, "No peripherals found");
         return;
     }
+    /*
     // Send Button
     canvas_draw_rbox(canvas, 45, 48, 45, 13, 3);
     canvas_set_color(canvas, ColorWhite);
@@ -34,22 +35,34 @@ void draw_sender_view(Canvas* canvas, i2cSender* i2c_sender) {
     // Value
     canvas_draw_str_aligned(canvas, 3, 15, AlignLeft, AlignTop, "Value: ");
     canvas_draw_icon(canvas, 33, 17, &I_ButtonUp_7x4);
-    canvas_draw_icon(canvas, 68, 17, &I_ButtonDown_7x4);
-    snprintf(addr_text, sizeof(addr_text), "0x%02x", (int)i2c_sender->value);
+    canvas_draw_icon(canvas,90, 17, &I_ButtonDown_7x4);
+    snprintf(addr_text, sizeof(addr_text), "0x%04x", (int)i2c_sender->value);
     canvas_draw_str_aligned(canvas, 43, 15, AlignLeft, AlignTop, addr_text);
+    */
+char long_text[128];
+   snprintf(long_text, sizeof(long_text), "Running? %d", (int)i2c_sender->scd4xStatus);
+    canvas_draw_str_aligned(canvas, 43, 15, AlignLeft, AlignTop, long_text);
     if(i2c_sender->must_send) {
         i2c_send(i2c_sender);
     }
     // Result
-    canvas_draw_str_aligned(canvas, 3, 25, AlignLeft, AlignTop, "Result: ");
+    
+    //canvas_draw_str_aligned(canvas, 3, 25, AlignLeft, AlignTop, "Result: ");
     if(i2c_sender->sended) {
-        uint8_t row = 1;
+       
+        //nprintf(long_text, sizeof(long_text), "co2: %d ppm,T: %.1f C, H: %.1f", i2c_sender->co2_ppm, i2c_sender->temperature, i2c_sender->humidity);
+        snprintf(long_text, sizeof(long_text), "co2: %d ppm", i2c_sender->co2_ppm);
+            canvas_draw_str_aligned(canvas, 3, 25, AlignLeft, AlignTop, long_text);
+            snprintf(long_text, sizeof(long_text), "T: %.1f C, H: %.1f", i2c_sender->temperature, i2c_sender->humidity);
+            canvas_draw_str_aligned(canvas, 3, 35, AlignLeft, AlignTop, long_text);
+        /*
+         uint8_t row = 1;
         uint8_t column = 1;
         const uint8_t x_min = 3;
         const uint8_t y_min = 25;
         uint8_t x_pos = 0;
         uint8_t y_pos = 0;
-        for(uint8_t i = 0; i < sizeof(i2c_sender->recv); i++) {
+            for(uint8_t i = 0; i < sizeof(i2c_sender->recv); i++) {
             x_pos = x_min + (column - 1) * 35;
             if(row == 1) {
                 x_pos += 40;
@@ -66,5 +79,6 @@ void draw_sender_view(Canvas* canvas, i2cSender* i2c_sender) {
                 break;
             }
         }
+        */
     }
 }

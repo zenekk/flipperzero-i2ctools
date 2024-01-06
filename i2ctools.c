@@ -66,6 +66,14 @@ int32_t i2ctools_app(void* p) {
     i2ctools->scanner = i2c_scanner_alloc();
 
     i2ctools->sender = i2c_sender_alloc();
+    // start_periodic_measurement
+    //i2ctools->sender->value = 0xb121;
+
+    //read_measurement
+    //i2ctools->sender->value = 0x05ec;
+    
+    //get_data_ready_status:
+    //i2ctools->sender->value = 0xb8e4;
     // Share scanner with sender
     i2ctools->sender->scanner = i2ctools->scanner;
 
