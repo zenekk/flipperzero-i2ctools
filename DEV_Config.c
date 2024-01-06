@@ -32,17 +32,19 @@
 #include "DEV_Config.h"
 #include "stm32f1xx_hal_spi.h"
 
-extern SPI_HandleTypeDef hspi1;
-void DEV_SPI_WriteByte(UBYTE value)
-{
-    HAL_SPI_Transmit(&hspi1, &value, 1, 1000);
-}
+#include "i2csender.h"
 
-void DEV_SPI_Write_nByte(UBYTE *value, UDOUBLE len)
-{
-    HAL_SPI_Transmit(&hspi1, value, len, 1000);
-}
+//extern SPI_HandleTypeDef hspi1;
+//void DEV_SPI_WriteByte(UBYTE value)
+//{
+ //   HAL_SPI_Transmit(&hspi1, &value, 1, 1000);
+//}
 
+//void DEV_SPI_Write_nByte(UBYTE *value, UDOUBLE len)
+//{
+ //   HAL_SPI_Transmit(&hspi1, value, len, 1000);
+//}
+/*
 int DEV_Module_Init(void)
 {
     DEV_Digital_Write(EPD_DC_PIN, 0);
@@ -62,3 +64,4 @@ void DEV_Module_Exit(void)
     DEV_Digital_Write(EPD_RST_PIN, 0);
 }
 
+*/

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "epd_4in2b_v2.h": "c",
+        "i2csender.h": "c"
+    }
+}

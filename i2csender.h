@@ -4,7 +4,18 @@
 #include <furi_hal.h>
 #include "i2cscanner.h"
 
-#include "EPD_4in2b_V2.h"
+void DEV_Digital_Write(GpioPinRecord pin, bool state);
+
+bool DEV_Digital_Read(GpioPinRecord pin);
+
+#define EPD_BUSY_PIN (gpio_pins[7]) //12
+#define EPD_RST_PIN (gpio_pins[8]) //13
+#define EPD_DC_PIN (gpio_pins[9]) //14
+#define EPD_CS_PIN (gpio_pins[10]) //15 alternative CS for debug
+#define pinInput1 (gpio_pins[11]) // 16
+
+#define DEV_Delay_ms(__xms) furi_delay_ms(__xms);
+
 
 typedef enum {
     scd4xStatus_STOPPED,

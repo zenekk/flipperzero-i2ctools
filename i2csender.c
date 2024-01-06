@@ -6,11 +6,18 @@
 //#define EPD_PWR_PIN TBD ?
 #define EPD_RST_PIN EPD_RST_PIN
 */
-#define EPD_BUSY_PIN (gpio_pins[7]) //12
-#define EPD_RST_PIN (gpio_pins[8]) //13
-#define EPD_DC_PIN (gpio_pins[9]) //14
-#define EPD_CS_PIN (gpio_pins[10]) //15 alternative CS for debug
-#define pinInput1 (gpio_pins[11]) // 16
+
+
+
+
+
+
+
+
+
+#include "EPD_4in2b_V2.h"
+
+
 
 // Display resolution
 #define EPD_4IN2_WIDTH       400
@@ -158,7 +165,7 @@ bool DEV_SPI_WriteByte(uint8_t reg)
 
               return result;
 }
-
+/* 
 int DEV_Module_Init(void)
 {
     DEV_Digital_Write(EPD_DC_PIN, 0);
@@ -168,11 +175,11 @@ int DEV_Module_Init(void)
 		return 0;
 }
 
-
-void DEV_Delay_ms(uint32_t time_ms)
+ */
+/* void DEV_Delay_ms(uint32_t time_ms)
 {
     furi_delay_ms(time_ms);
-}
+} */
 
 
 
@@ -387,7 +394,7 @@ void Paint_NewImage(UBYTE *image, UWORD Width, UWORD Height, UWORD Rotate, UWORD
         Paint.Height = Width;
     }
 }
-void DEV_Module_Exit(void)
+/* void DEV_Module_Exit(void)
 {
     DEV_Digital_Write(EPD_DC_PIN, 0);
     DEV_Digital_Write(EPD_CS_PIN, 0);
@@ -396,7 +403,7 @@ void DEV_Module_Exit(void)
 	//DEV_Digital_Write(EPD_PWR_PIN, 0);
     DEV_Digital_Write(EPD_RST_PIN, 0);
 }
-
+ */
 //from EPD_test(void) from EPD_4in2_test.c
 int Zenon_EPD_test()
 {
