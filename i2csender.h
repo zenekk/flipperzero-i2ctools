@@ -4,6 +4,8 @@
 #include <furi_hal.h>
 #include "i2cscanner.h"
 
+#include "EPD_4in2b_V2.h"
+
 typedef enum {
     scd4xStatus_STOPPED,
     scd4xStatus_RUNNING
@@ -19,6 +21,7 @@ typedef struct {
     uint16_t co2_ppm;
     double temperature;
     double humidity;
+    bool TrueFalse;
  scd4xStatusType scd4xStatus;
 
     i2cScanner* scanner;

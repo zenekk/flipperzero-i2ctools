@@ -193,6 +193,7 @@ int32_t i2ctools_app(void* p) {
                 }
             }
         } else if(event.key == InputKeyRight && event.type == InputTypeRelease) {
+            i2ctools->sender->TrueFalse = true;
             if(i2ctools->main_view->current_view == SEND_VIEW) {
                 if(i2ctools->sender->address_idx < (i2ctools->scanner->nb_found - 1)) {
                     i2ctools->sender->address_idx++;
@@ -205,6 +206,7 @@ int32_t i2ctools_app(void* p) {
                 }
             }
         } else if(event.key == InputKeyLeft && event.type == InputTypeRelease) {
+            i2ctools->sender->TrueFalse = false;
             if(i2ctools->main_view->current_view == SEND_VIEW) {
                 if(i2ctools->sender->address_idx > 0) {
                     i2ctools->sender->address_idx--;

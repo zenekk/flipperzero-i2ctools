@@ -12,6 +12,8 @@
 #include "views/sender_view.h"
 #include "views/infos_view.h"
 
+#include <furi_hal_resources.h>
+
 // App datas
 typedef struct {
     FuriMutex* mutex;
