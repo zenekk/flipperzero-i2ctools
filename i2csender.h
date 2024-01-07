@@ -8,11 +8,13 @@ void DEV_Digital_Write(GpioPinRecord pin, bool state);
 
 bool DEV_Digital_Read(GpioPinRecord pin);
 
+    // pin indexes of gpio_pins[X] defined in furi_hal_resources.c line 71
+
 #define EPD_BUSY_PIN (gpio_pins[7]) //12
-#define EPD_RST_PIN (gpio_pins[8]) //13
-#define EPD_DC_PIN (gpio_pins[9]) //14
-#define EPD_CS_PIN (gpio_pins[10]) //15 alternative CS for debug
-#define pinInput1 (gpio_pins[11]) // 16
+#define EPD_RST_PIN (gpio_pins[5]) //[5]=pin7 [8]=pin13
+#define EPD_DC_PIN (gpio_pins[4]) // [4]=pin6 [9]=pin14
+#define EPD_CS_PIN (gpio_pins[2]) //[2]=pin4 CS
+//#define pinInput1 (gpio_pins[11]) // 16
 
 
 #define UBYTE uint8_t 

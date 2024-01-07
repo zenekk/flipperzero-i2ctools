@@ -653,6 +653,7 @@ int Zenon_EPD_test(i2cSender* i2c_sender)
         FURI_LOG_I("EPAPER", "Init Fast done");
 
     EPD_4IN2B_V2_Clear(i2c_sender->x_offset, i2c_sender->y_offset);
+    //EPD_Paint_Zenon(i2c_sender->x_offset, i2c_sender->y_offset);
 /*
 Debug("Before creating images")
     DEV_Delay_ms(15000);
@@ -728,13 +729,12 @@ void i2c_send(i2cSender* i2c_sender)
 
                 */
     
-    // pin indexes of gpio_pins[X] defined in furi_hal_resources.c line 71
 
     furi_hal_gpio_init_simple(EPD_DC_PIN.pin, GpioModeOutputPushPull);
     furi_hal_gpio_init_simple(EPD_RST_PIN.pin, GpioModeOutputPushPull);
     furi_hal_gpio_init_simple(EPD_CS_PIN.pin, GpioModeOutputPushPull);
     furi_hal_gpio_init_simple(EPD_BUSY_PIN.pin, GpioModeInput);
-    furi_hal_gpio_init_simple(pinInput1.pin, GpioModeInput);
+    //furi_hal_gpio_init_simple(pinInput1.pin, GpioModeInput);
     //furi_hal_gpio_init_simple(pin14, GpioModeInput);
         //  FURI_LOG_I("TEST", "TrueFalse: %d on pin %s number %d", i2c_sender->TrueFalse, pin13.name, pin13.number);
         // furi_hal_gpio_write(gpio_pins[8].pin, i2c_sender->TrueFalse);
@@ -758,8 +758,8 @@ void i2c_send(i2cSender* i2c_sender)
 
 
 
-    FURI_LOG_I("TEST", "input: %d on %s number %d", furi_hal_gpio_read(pinInput1.pin), pinInput1.name, pinInput1.number);
-    FURI_LOG_I("TEST", "Status: RST (%s:%d): %d \t DC (%s:%d): %d \t AltCS (%s:%d): %d", 
+    //FURI_LOG_I("TEST", "input: %d on %s number %d", furi_hal_gpio_read(pinInput1.pin), pinInput1.name, pinInput1.number);
+    FURI_LOG_I("TEST", "Status: RST (%s:%d): %d \t DC (%s:%d): %d \t CS (%s:%d): %d", 
                         EPD_RST_PIN.name,    EPD_RST_PIN.number,  furi_hal_gpio_read(EPD_RST_PIN.pin),
                         EPD_DC_PIN.name,     EPD_DC_PIN.number,   furi_hal_gpio_read(EPD_DC_PIN.pin),
                         EPD_CS_PIN.name,  EPD_CS_PIN.number,furi_hal_gpio_read(EPD_CS_PIN.pin)          );
