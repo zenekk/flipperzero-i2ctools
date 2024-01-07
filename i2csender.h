@@ -14,13 +14,25 @@ bool DEV_Digital_Read(GpioPinRecord pin);
 #define EPD_CS_PIN (gpio_pins[10]) //15 alternative CS for debug
 #define pinInput1 (gpio_pins[11]) // 16
 
+
+#define UBYTE uint8_t 
+#define UWORD uint16_t 
+#define UDOUBLE uint32_t
+
 #define DEV_Delay_ms(__xms) furi_delay_ms(__xms);
+#define Debug(__xstring) FURI_LOG_I("DBG", __xstring);
+#define printf(__xstring) FURI_LOG_I("DBG", __xstring);
 
 
 typedef enum {
     scd4xStatus_STOPPED,
     scd4xStatus_RUNNING
 } scd4xStatusType;
+
+typedef enum {
+    epaperStatus_STOPPED,
+    epaperStatus_RUNNING
+} epaperStatusType;
 
 typedef struct {
     uint8_t address_idx;
@@ -33,7 +45,11 @@ typedef struct {
     double temperature;
     double humidity;
     bool TrueFalse;
+    uint16_t x_offset;
+    uint16_t y_offset;
  scd4xStatusType scd4xStatus;
+  epaperStatusType epaperStatus;
+
 
     i2cScanner* scanner;
 } i2cSender;

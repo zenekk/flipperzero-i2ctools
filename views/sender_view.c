@@ -46,6 +46,8 @@ void draw_sender_view(Canvas* canvas, i2cSender* i2c_sender) {
 char long_text[128];
    snprintf(long_text, sizeof(long_text), "Running? %d", (int)i2c_sender->scd4xStatus);
     canvas_draw_str_aligned(canvas, 43, 15, AlignLeft, AlignTop, long_text);
+    snprintf(long_text, sizeof(long_text), "x: %d, y: %d", i2c_sender->x_offset, i2c_sender->y_offset);
+            canvas_draw_str_aligned(canvas, 3, 5, AlignLeft, AlignTop, long_text);
     if(i2c_sender->must_send) {
         i2c_send(i2c_sender);
     }
@@ -59,6 +61,7 @@ char long_text[128];
             canvas_draw_str_aligned(canvas, 3, 25, AlignLeft, AlignTop, long_text);
             snprintf(long_text, sizeof(long_text), "T: %.1f C, H: %.1f", i2c_sender->temperature, i2c_sender->humidity);
             canvas_draw_str_aligned(canvas, 3, 35, AlignLeft, AlignTop, long_text);
+
         /*
          uint8_t row = 1;
         uint8_t column = 1;

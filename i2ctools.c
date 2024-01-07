@@ -93,6 +93,7 @@ int32_t i2ctools_app(void* p) {
         }
         // Up
         else if(event.key == InputKeyUp && event.type == InputTypeRelease) {
+            i2ctools->sender->y_offset -= 10;
             if(i2ctools->main_view->current_view == MAIN_VIEW) {
                 if((i2ctools->main_view->menu_index > SCAN_VIEW)) {
                     i2ctools->main_view->menu_index--;
@@ -135,6 +136,7 @@ int32_t i2ctools_app(void* p) {
         }
         // Down
         else if(event.key == InputKeyDown && event.type == InputTypeRelease) {
+            i2ctools->sender->y_offset += 10;
             if(i2ctools->main_view->current_view == MAIN_VIEW) {
                 if(i2ctools->main_view->menu_index < MENU_SIZE - 1) {
                     i2ctools->main_view->menu_index++;
@@ -194,6 +196,7 @@ int32_t i2ctools_app(void* p) {
             }
         } else if(event.key == InputKeyRight && event.type == InputTypeRelease) {
             i2ctools->sender->TrueFalse = true;
+            i2ctools->sender->x_offset += 10;
             if(i2ctools->main_view->current_view == SEND_VIEW) {
                 if(i2ctools->sender->address_idx < (i2ctools->scanner->nb_found - 1)) {
                     i2ctools->sender->address_idx++;
@@ -207,6 +210,7 @@ int32_t i2ctools_app(void* p) {
             }
         } else if(event.key == InputKeyLeft && event.type == InputTypeRelease) {
             i2ctools->sender->TrueFalse = false;
+            i2ctools->sender->x_offset -= 10;
             if(i2ctools->main_view->current_view == SEND_VIEW) {
                 if(i2ctools->sender->address_idx > 0) {
                     i2ctools->sender->address_idx--;
